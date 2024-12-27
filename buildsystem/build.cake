@@ -17,7 +17,7 @@ var isCiBuild = BuildSystem.AzurePipelines.IsRunningOnAzurePipelines;
 var suffixVersion = $"alpha-{DateTime.Today.ToString("yyyyMMdd")}-{BuildSystem.AzurePipelines.Environment.Build.Id}";
 var feedzLVSSource = "https://f.feedz.io/videolan/preview/nuget/index.json";
 var FEEDZ = "FEEDZ";
-const uint totalPackageCount = 10;
+const uint totalPackageCount = 12;
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -48,8 +48,7 @@ Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    NuGetRestore(solutionPath);
-    MoveDirectory("../src/packages", packagesDir);
+    DotNetRestore(solutionPath);
 });
 
 Task("Build")
@@ -70,12 +69,12 @@ Task("Build-only-libvlcsharp")
 Task("Test")
     .Does(() =>
 {
-    var settings = new DotNetCoreTestSettings
+    var settings = new DotNetTestSettings
     {
         Loggers = new []{ "console;verbosity=detailed" }
     };
 
-    DotNetCoreTest(testCsproj, settings);
+    DotNetTest(testCsproj, settings);
 });
 
 Task("CIDeploy")

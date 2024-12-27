@@ -4,7 +4,7 @@ Please read this!
 Before opening a new issue, make sure to search for keywords in the issues
 filtered by "bug" label and verify the issue you're about to submit isn't a duplicate.
 
-If you are using LibVLCSharp commercially, please consider purchasing a Commercial License: https://videolabs.io/solutions/libvlcsharp
+If you are using LibVLCSharp commercially, please consider purchasing a Commercial License: https://videolabs.io/products/libvlcsharp
 
 If this is a question please ask on StackOverflow: https://stackoverflow.com/questions/tagged/libvlcsharp.
 
@@ -36,7 +36,9 @@ Maintainers should be able to just clone and run your minimal project. If you do
 ### Does it work on other plaforms? Does it work with the official VLC apps?
 
 <!-- Paste any relevant logs - please use code blocks (```) to format console output,
-logs, and code as it's very hard to read otherwise. -->
+logs, and code as it's very hard to read otherwise. 
+
+If the VLC Windows app (GPL) does not have the issue and you're using the LGPL version of LibVLC in your app, consider this as possible reason for these differences in behavior -->
 
 ### Relevant LibVLC logs and/or screenshots
 

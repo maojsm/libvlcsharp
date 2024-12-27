@@ -179,6 +179,9 @@ namespace LibVLCSharp.Shared
                 EntryPoint = "libvlc_get_compiler")]
             internal static extern IntPtr LibVLCGetCompiler();
 
+            [DllImport(Constants.LibraryName, CallingConvention = CallingConvention.Cdecl,
+                EntryPoint = "libvlc_clock")]
+            internal static extern long LibVLCClock();
 #if ANDROID
             [DllImport(Constants.LibraryName, CallingConvention = CallingConvention.Cdecl,
                 EntryPoint = "libvlc_media_player_set_android_context")]
@@ -195,7 +198,6 @@ namespace LibVLCSharp.Shared
         /// and where applicable:
         /// <para>- setlocale() and textdomain(),</para>
         /// <para>- setenv(), unsetenv() and putenv(),</para>
-        /// <para>- with the X11 display system, XInitThreads()</para>
         /// (see also libvlc_media_player_set_xwindow()) and
         /// <para>- on Microsoft Windows, SetErrorMode().</para>
         /// <para>- sigprocmask() shall never be invoked; pthread_sigmask() can be used.</para>
@@ -251,7 +253,6 @@ namespace LibVLCSharp.Shared
         /// and where applicable:
         /// <para>- setlocale() and textdomain(),</para>
         /// <para>- setenv(), unsetenv() and putenv(),</para>
-        /// <para>- with the X11 display system, XInitThreads()</para>
         /// (see also libvlc_media_player_set_xwindow()) and
         /// <para>- on Microsoft Windows, SetErrorMode().</para>
         /// <para>- sigprocmask() shall never be invoked; pthread_sigmask() can be used.</para>
@@ -303,7 +304,7 @@ namespace LibVLCSharp.Shared
                 options = options.Concat(new[] { "--verbose=2" }).ToArray();
             }
 #if UWP
-            return options.Concat(new[] {"--aout=winstore"}).ToArray();
+            return options.Concat(new[] {"--aout=winstore", "--audio-resampler=speex_resampler"}).ToArray();
 #elif ANDROID
             return options.Concat(new[] {"--audio-resampler=soxr"}).ToArray();
 #else
@@ -766,6 +767,14 @@ namespace LibVLCSharp.Shared
         /// Example: "gcc version 4.2.3 (Ubuntu 4.2.3-2ubuntu6)"
         /// </summary>
         public string LibVLCCompiler => Native.LibVLCGetCompiler().FromUtf8()!;
+
+        /// <summary>
+        /// Return the current time as defined by LibVLC. The unit is the microsecond.
+        /// Time increases monotonically (regardless of time zone changes and RTC adjustments).
+        /// The origin is arbitrary but consistent across the whole system (e.g. the system uptime, the time since the system was booted).
+        /// On systems that support it, the POSIX monotonic clock is used.
+        /// </summary>
+        public long Clock => Native.LibVLCClock();
 
         #region Exit
 

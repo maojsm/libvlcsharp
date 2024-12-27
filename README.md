@@ -20,6 +20,7 @@ _The official repository URL for this repo is https://code.videolan.org/videolan
   - [Preview builds](#Pre-release-versions)
 - [Getting started](#getting-started)
 - [Documentation](#documentation)
+- [Ebook](#ebook)
 - [Migrating from Vlc.DotNet](docs/migrating_from_Vlc.DotNet.md)
 - [Samples](#samples)
 - [Quick API overview](#quick-api-overview)
@@ -76,7 +77,8 @@ Mono, .NET Framework and .NET Core runtimes are supported.
 - Windows Universal (UWP for Desktop, mobile and Xbox)
 - Linux including desktop, server and Raspberry Pi (GTK)
 - Xamarin.Forms
-- Uno Platform (UWP, Android, iOS)
+- MAUI
+- Uno Platform 5 (WinUI, Android, iOS)
 - Avalonia (Windows, macOS, Linux)
 - .NET Standard 1.1 and 2.0
 - .NET Framework 4.0 and later
@@ -84,6 +86,9 @@ Mono, .NET Framework and .NET Core runtimes are supported.
 - [Unity3D](https://code.videolan.org/videolan/vlc-unity)
   - Windows Classic
   - Android
+  - UWP
+  - iOS
+  - macOS
 
 ## Installation
 
@@ -118,6 +123,7 @@ LibVLCSharp is the .NET wrapper that consumes `LibVLC` and allows you to interac
 | Xamarin.Mac       | [LibVLCSharp](src/LibVLCSharp/README.md)        | [![LibVLCSharpBadge]][LibVLCSharp]                |
 | UWP               | [LibVLCSharp](src/LibVLCSharp/README.md)        | [![LibVLCSharpBadge]][LibVLCSharp]                |
 | Xamarin.Forms     | [LibVLCSharp.Forms][RLibVLCSharpForms]          | [![LibVLCSharpFormsBadge]][LibVLCSharpForms]      |
+| MAUI              | [LibVLCSharp.MAUI][RLibVLCSharpMAUI]            | [![LibVLCSharpMAUIBadge]][LibVLCSharpMAUI]        |
 | WPF               | [LibVLCSharp.WPF][RLibVLCSharpWPF]              | [![LibVLCSharpWPFBadge]][LibVLCSharpWPF]          |
 | Xamarin.Forms.WPF | [LibVLCSharp.Forms.WPF][RLibVLCSharpFormsWPF]   | [![LibVLCSharpFormsWPFBadge]][LibVLCSharpFormsWPF]|
 | GTK               | [LibVLCSharp.GTK][RLibVLCSharpGTK]              | [![LibVLCSharpGTKBadge]][LibVLCSharpGTK]          |
@@ -126,8 +132,11 @@ LibVLCSharp is the .NET wrapper that consumes `LibVLC` and allows you to interac
 | Uno Platform      | [LibVLCSharp.Uno][RLibVLCSharpUno]              | [![LibVLCSharpUnoBadge]][LibVLCSharpUno]          |
 | Avalonia          | [LibVLCSharp.Avalonia][RLibVLCSharpAvalonia]    | [![LibVLCSharpAvaloniaBadge]][LibVLCSharpAvalonia]|
 | Eto.Forms         | [LibVLCSharp.Eto][RLibVLCSharpEto]              | [![LibVLCSharpEtoBadge]][LibVLCSharpEto]          |
-| Unity3D - Windows | [VLC for Unity (Windows)][VLCUnityWindows]      | [![VLCUnityBadge]][VLCUnityWindows]               |
-| Unity3D - Android | [VLC for Unity (Android)][VLCUnityAndroid]      | [![VLCUnityBadge]][VLCUnityAndroid]               |
+| Unity3D - Windows | [VLC for Unity (Windows)][VLCUnityStore]        | [![VLCUnityBadge]][VLCUnityStore]                 |
+| Unity3D - UWP     | [VLC for Unity (UWP)][VLCUnityStore]            | [![VLCUnityBadge]][VLCUnityStore]                 |
+| Unity3D - Android | [VLC for Unity (Android)][VLCUnityStore]        | [![VLCUnityBadge]][VLCUnityStore]                 |
+| Unity3D - iOS     | [VLC for Unity (iOS)][VLCUnityStore]            | [![VLCUnityBadge]][VLCUnityStore]                 |
+| Unity3D - macOS   | [VLC for Unity (macOS)][VLCUnityStore]          | [![VLCUnityBadge]][VLCUnityStore]                 |
 
 ### Pre-release versions
 
@@ -144,6 +153,7 @@ LibVLCSharp 4 preview and LibVLC 4 nightly builds are distributed using https://
 See the docs for [preview builds installation details](docs/libvlc_preview.md).
 
 [RLibVLCSharpForms]: src/LibVLCSharp.Forms/README.md
+[RLibVLCSharpMAUI]: src/LibVLCSharp.MAUI/README.md
 [RLibVLCSharpWPF]: src/LibVLCSharp.WPF/README.md
 [RLibVLCSharpFormsWPF]: src/LibVLCSharp.Forms.Platforms.WPF/README.md
 [RLibVLCSharpGTK]: src/LibVLCSharp.GTK/README.md
@@ -177,6 +187,9 @@ See the docs for [preview builds installation details](docs/libvlc_preview.md).
 [LibVLCSharpForms]: https://www.nuget.org/packages/LibVLCSharp.Forms/
 [LibVLCSharpFormsBadge]: https://img.shields.io/nuget/v/LibVLCSharp.Forms.svg
 
+[LibVLCSharpMAUI]: https://www.nuget.org/packages/LibVLCSharp.MAUI/
+[LibVLCSharpMAUIBadge]: https://img.shields.io/nuget/v/LibVLCSharp.MAUI.svg
+
 [LibVLCSharpWPF]: https://www.nuget.org/packages/LibVLCSharp.WPF/
 [LibVLCSharpWPFBadge]: https://img.shields.io/nuget/v/LibVLCSharp.WPF.svg
 
@@ -201,8 +214,7 @@ See the docs for [preview builds installation details](docs/libvlc_preview.md).
 [LibVLCSharpEto]: https://www.nuget.org/packages/LibVLCSharp.Eto/
 [LibVLCSharpEtoBadge]: https://img.shields.io/nuget/v/LibVLCSharp.Eto.svg
 
-[VLCUnityWindows]: https://assetstore.unity.com/packages/tools/video/vlc-for-unity-windows-133979
-[VLCUnityAndroid]: https://assetstore.unity.com/packages/tools/video/vlc-for-unity-android-213786
+[VLCUnityStore]: https://videolabs.io/store/unity
 [VLCUnityBadge]: https://img.shields.io/badge/Made%20with-Unity-57b9d3.svg?style=flat&logo=unity
 
 ## Getting started
@@ -240,6 +252,12 @@ This page indexes all available tutorial materials about LibVLCSharp. There are 
 ### [Community projects](docs/made_with_libvlcsharp.md)
 
 Here we list several interesting projects made by the community using LibVLCSharp. Feel free to send a PR to yours!
+
+## Ebook
+
+In September 2022, the first book ever about LibVLC, the VideoLAN community and LibVLCSharp was released!
+
+[The Good Parts of LibVLC](https://mfkl.gumroad.com/l/libvlc-good-parts) contains everything you need to know about VLC, LibVLC and how to use it from .NET with LibVLCSharp.
 
 ## Samples
 
@@ -335,7 +353,7 @@ If you have any question or if you're not sure it's actually an issue, please vi
 If you would like VLC developers to provide you with:
 - custom development on LibVLC and/or LibVLCSharp, 
 - training and workshops,
-- [commercial licenses](https://videolabs.io/solutions/libvlcsharp),
+- [commercial licenses](https://videolabs.io/products/libvlcsharp),
 - support services,
 - consulting services,
 - other multimedia services.
@@ -348,7 +366,7 @@ Please read and follow the [VideoLAN CoC](https://wiki.videolan.org/Code_of_Cond
 
 ## Licenses
 
-LibVLCSharp is released under the [LGPLv2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)) and is also available under a [commercial license](https://videolabs.io/solutions/libvlcsharp).
+LibVLCSharp is released under the [LGPLv2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)) and is also available under a [commercial license](https://videolabs.io/products/libvlcsharp).
 
 Note: the .NET4.0 LibVLCSharp build references a nuget package that may indicate its license as the .NET Library license but it's actually [opensource](https://github.com/Microsoft/referencesource/commit/6952d2c3923d30a4d88bf57120688b9532bbe1d8) under MIT.
 

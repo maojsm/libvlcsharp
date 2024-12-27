@@ -1,3 +1,78 @@
+LibVLCSharp version 3.9.1
+=========================
+* Add macOS and tvOS NET 8 targets
+* docs and CI improvements
+* MAUI: Add MediaElement support for iOS and Android by @jonx
+* Avalonia: Fix VideoView failing to update Content position when shifted by @Odalith
+* Avalonia: Add GetVisibleRegionAsGeometry() to clip VideoView.Content to parent window bounds by @Odalith
+
+LibVLCSharp version 3.9.0
+=========================
+* [BREAKING CHANGE] Uno: Move to Uno 5 support.
+* [BREAKING CHANGE] MAUI: Move to .NET 8
+* Core: Add support to .NET 8
+* CI: Reduce macOS CI scope as it cannot cross-build old/new TFMs easily.
+* UWP: use speex for audio resampling
+
+LibVLCSharp version 3.8.5
+=========================
+* MAUI: Fix broken release by shipping the modern AWindow binding to NuGet.
+
+LibVLCSharp version 3.8.4
+=========================
+* MAUI: Initial support with simple VideoView for now.
+
+LibVLCSharp version 3.8.3
+=========================
+* UWP: Fix for opaque subtitle background bug while still allowing optional alpha configuration
+* Avalonia: Support UserControl by @taivasverkko
+* Avalonia: Child content support for VideoView by @taivasverkko
+
+LibVLCSharp version 3.8.2
+=========================
+* WPF: ForegroundWindow: Fix regression by @amine2050
+
+LibVLCSharp version 3.8.1
+=========================
+* WPF: ForegroundWindow: support Viewbox contained and scaled video host by @amine2050
+
+LibVLCSharp version 3.8.0
+=========================
+* UWP: Added Clear method on VideoView by @FrayxRulez
+* UWP: Add alpha support to the SwapChain by @FrayxRulez
+* [BREAKING CHANGE] Add support to Avalonia 11. This breaks support to previous versions as Avalonia is not backward compatible.
+
+LibVLCSharp version 3.7.0
+=========================
+[BREAKING CHANGE] for UWP only: The namespaces of the view has been changed from
+```
+LibVLCSharp.Platforms.UWP
+xmlns:lvs="using:LibVLCSharp.Platforms.UWP"
+```
+to
+```
+LibVLCSharp.Platforms.Windows
+xmlns:lvs="using:LibVLCSharp.Platforms.Windows"
+```
+We needed to have a way to name the view for both UWP and WinUI platforms as having 2 separate names was not possible. Hence the API break.
+
+* WinUI: Add initial View integration.
+Both Packaged and Unpackaged modes have been tested. For Unpackaged, modify your csproj as the following
+    <EnablePreviewMsixTooling>false</EnablePreviewMsixTooling>
+	<WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
+	<WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+and remove Package.appxmanifest.
+The minimal TFM supported for WinUI is net6.0-windows10.0.17763.0.
+
+* UWP: Fix small D3D11 memory leaks in the VideoView.
+
+LibVLCSharp version 3.6.8
+=========================
+* WPF: Prevent disappear foreground window when closing canceled.
+* Linux [NON-API BREAKING CHANGE]: Fix Wayland support by removing automatic X11 threading system initialization (see docs/linux-setup.md)
+* Documentation improvements
+
 LibVLCSharp version 3.6.7
 =========================
 * Updated samples.

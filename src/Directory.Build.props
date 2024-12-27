@@ -12,7 +12,10 @@
     <DefineConstants>$(DefineConstants);ANDROID</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="$(TargetFramework.StartsWith('uap'))">
-    <DefineConstants>$(DefineConstants);UWP</DefineConstants>
+    <DefineConstants>$(DefineConstants);UWP;WINDOWS_MODERN</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(TargetFramework.Contains('windows10'))">
+    <DefineConstants>$(DefineConstants);WINUI;WINDOWS_MODERN</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
     <DefineConstants>$(DefineConstants);UWP10_0</DefineConstants>
@@ -41,7 +44,7 @@
     <RepositoryUrl>https://code.videolan.org/videolan/LibVLCSharp</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>https://code.videolan.org/videolan/LibVLCSharp/blob/master/NEWS</PackageReleaseNotes>
-    <VersionPrefix>3.6.7</VersionPrefix>
+    <VersionPrefix>3.9.1</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <PackageTags>libvlc;vlc;videolan;native;c/c++;video;audio;player;media;mediaplayer;codec;ffmpeg;xamarin;graphics;ios;android;linux;windows;macos;cross-platform</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
